@@ -1,0 +1,7 @@
+<!--
+  This view is used to render the installed plugins page.
+-->
+<div>
+ This plugin provides global settings for a Redis server, and allows other plugins
+ to get a Redis connection using Jedis with the user-defined settings. Not meant for usage by end-users.
+</div>
