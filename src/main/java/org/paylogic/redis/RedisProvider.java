@@ -19,10 +19,10 @@ public class RedisProvider extends GlobalConfiguration {
     @Getter @Setter private int port = 6379;
     @Getter @Setter private int database = 0;
 
-    private JedisPool pool;
+    private transient JedisPool jedisPool;
 
     public RedisProvider() {
-        pool = new JedisPool(new JedisPoolConfig(), this.hostname, this.port);
+        jedisPool = new JedisPool(new JedisPoolConfig(), this.hostname, this.port);
         load();
     }
 
@@ -33,16 +33,16 @@ public class RedisProvider extends GlobalConfiguration {
     }
 
     public Jedis getConnection() {
-        Jedis client = this.pool.getResource();
+        Jedis client = jedisPool.getResource();
         client.select(this.database);
         return client;
     }
 
     public void returnConnection(Jedis connection) {
-        this.pool.returnResource(connection);
+        jedisPool.returnResource(connection);
     }
 
     public void returnBrokenConnection(Jedis connection) {
-        this.pool.returnBrokenResource(connection);
+        jedisPool.returnBrokenResource(connection);
     }
 }
