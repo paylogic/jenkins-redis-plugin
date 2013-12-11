@@ -8,31 +8,33 @@
 
     <groupId>org.paylogic</groupId>
     <artifactId>redis</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.4</version>
     <packaging>hpi</packaging>
 
 
     <dependencies>
         <dependency>
+            <groupId>org.jenkins-ci.main</groupId>
+            <artifactId>jenkins-core</artifactId>
+            <version>1.539</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.12.2</version>
         </dependency>
-
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.0.0</version>
-            <type>jar</type>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
     <distributionManagement>
         <repository>
-            <id>laptop</id>
-            <name>laptop</name>
-            <url>http://delll:8080/archiva/repository/internal/</url>
+            <id>localh</id>
+            <name>localh</name>
+            <url>http://localhost:1337/archiva/repository/internal/</url>
         </repository>
         <!--<snapshotRepository>
         <uniqueVersion>false</uniqueVersion>
